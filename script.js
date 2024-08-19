@@ -3,22 +3,28 @@ window.addEventListener("load", function () {
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
-        //console.log(listedPlanets);
+        console.log(listedPlanets);
     }).then(function () {
-        let destination = pickPlanet(listedPlanets);
-        addDestinationInfo(doucment, destination.name, destination.diameter, destination.star, destination.distance, destination.moons, destination.image);
+        const destination = pickPlanet(listedPlanets);
+
+        let name = destination.name;
+        let diameter = destination.diameter;
+        let star = destination.star;
+        let distance = destination.star;
+        let moons = destination.moons;
+        let imageUrl = destination.image;
+
+        addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl)
     });
 
-        //const form = document.getElementById("testForm");
-        const button = document.getElementById("formSubmit");
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            let pilot = document.querySelector("input[name=pilotName]").value;
-            let copilot = document.querySelector("input[name=copilotName]").value;
-            let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-            let cargoMass = document.querySelector("input[name=cargoMass]").value;
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            let pilotN = document.querySelector("input[name=pilotName]").value;
+            let copilotN = document.querySelector("input[name=copilotName]").value;
+            let fuelLevelV = document.querySelector("input[name=fuelLevel]").value;
+            let cargoMassV = document.querySelector("input[name=cargoMass]").value;
             let list = document.getElementById("faultyItems");
-
-            formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass);
-        })
+            event.preventDefault();
+            formSubmission(document, list, pilotN, copilotN, fuelLevelV, cargoMassV);
+        });
 });
