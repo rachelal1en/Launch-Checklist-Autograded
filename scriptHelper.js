@@ -32,7 +32,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let fuelStat = document.getElementById("fuelStatus");
     let cargoStat = document.getElementById("cargoStatus");
     let launchStat = document.getElementById("launchStatus");
-    let launchReady = true;
 
     // error for empty fields
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" ||
